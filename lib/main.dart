@@ -9,7 +9,6 @@ List _features; //features objects list in Json
 void main() async {
   _data = await getQuakes();
   _features = _data['features'];
-  //print(_data['features'] [0] ['properties']);
 
   runApp(new MaterialApp(
     title: "Quakes",
@@ -32,7 +31,7 @@ class Quakes extends StatelessWidget {
             itemCount: _features.length,
             padding: const EdgeInsets.all(15.0),
             itemBuilder: (BuildContext context, int position) {
-              //creating the roes for our listView
+              //creating the rows for our listView
               if (position.isOdd) return new Divider();
               final index = position ~/
                   2; //we are dividing position by 2 and returning an integer result
@@ -97,7 +96,7 @@ class Quakes extends StatelessWidget {
   }
 }
 
-//https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson
+//api call
 Future<Map> getQuakes() async {
   String apiUrl =
       "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
